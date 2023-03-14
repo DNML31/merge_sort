@@ -1,7 +1,7 @@
 def merge_sort(array, sorted)
 
   if array.length < 2
-    # sorted << array
+    sorted << array
     return
 
   else 
