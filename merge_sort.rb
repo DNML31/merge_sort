@@ -1,20 +1,31 @@
-def merge_sort(array)
+def merge_sort(array, sorted)
 
   if array.length < 2
+    # sorted << array
     return
 
   else 
     a = array[0..((array.length/2)-1)]
-    # first half
-    # recursive here?
+    # sort left half of elements
+    merge_sort(a, sorted)
+
+    print "\nthis is #{sorted}"
+
 
     b = array[(array.length/2)..array.length]
-    # second half
-    # recursive here?
-    
+    # sort right half of elements
+    merge_sort(b, sorted)
+    print "\nthis is #{sorted}"
+
   end
-
-
+  
+  if a[0] < b[0]
+    sorted << a[0]
+  else
+    sorted << b[0]
+  end
+  # merge sorted halves
+  print "\n#{sorted}"
 end
 # on input of n elements
 #   if n < 2
@@ -23,5 +34,6 @@ end
 #     sort left half of elements
 #     sort right half of elements 
 #     merge sorted halves
-
-merge_sort([2,1])
+array = [2,1]
+sorted = []
+puts merge_sort(array, sorted)
