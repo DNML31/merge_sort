@@ -1,32 +1,46 @@
-def merge_sort(array, sorted)
+def merge_sort(array)
 
   if array.length < 2
-    sorted << array
+    # sorted << array
     return
-
   else 
-    a = array[0..((array.length/2)-1)]
     # sort left half of elements
-    merge_sort(a, sorted)
+    a = array[0..((array.length/2)-1)]
+    print "#{a}"
+    merge_sort(a)
 
-    print "\nthis is #{sorted}"
-
-
-    b = array[(array.length/2)..array.length]
     # sort right half of elements
-    merge_sort(b, sorted)
-    print "\nthis is #{sorted}"
+    b = array[(array.length/2)..array.length]
+    print "\n#{b}"
+    merge_sort(b)
+  end
 
-  end
-  
-  if a[0] < b[0]
-    sorted << a[0]
+  merge_a = []
+  merge_b = []
+  merge_c = []
+
+  # assign left and right halves to separate arrays
+  if merge_a.none?
+    merge_a << array[0]
   else
-    sorted << b[0]
+    merge_b << array[0]
   end
+
+  print "\nthis is A #{merge_a}"
+  print "\nthis is B #{merge_b}"
+
   # merge sorted halves
-  print "\n#{sorted}"
+  # if merge_a[0] < merge_b[0]
+  #   merge_c << a[0]
+  # else
+  #   merge_c << b[0]
+  # end
+
+  print "\nthis is C #{merge_c}"
+
 end
+
+
 # on input of n elements
 #   if n < 2
 #     return
@@ -35,5 +49,7 @@ end
 #     sort right half of elements 
 #     merge sorted halves
 array = [2,1]
-sorted = []
-puts merge_sort(array, sorted)
+puts merge_sort(array)
+
+
+# merge section vs. sort section
