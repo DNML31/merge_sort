@@ -7,20 +7,28 @@ def merge(a, b)
 
   c = []
 
-  until (i == x || j == y) do
- 
-    if (a[i] < b[j])      # b[0] => [nil,2,4,5,6,nil,nil]
-      c[k+=1] = a[i+=1]
-    else
-      c[k+=1] = b[j+=1]
-    end
+  while (i <= x && j <= y) do
 
+    if (a[i] < b[j])
+      c[k] = a[i]
+      k += 1
+      i += 1
+    else
+      c[k] = b[j]
+      k += 1
+      j += 1
+    end
+    print "\nthis is c #{c}"
   end
 
-  if i == x
-    c[k+=1] = b[j+=1]
-  elsif j == y
-    c[k+=1] = a[i+=1]
+  if i <= x
+    c[k] = a[i]
+    k += 1
+    i += 1
+  elsif j <= y
+    c[k] = b[j]
+    k += 1
+    j += 1
   end
   # one of the arrays have reached the end of their lists at this point
   # copy the remaining numbers in the other list to c.
@@ -28,7 +36,7 @@ def merge(a, b)
   print c
 end
 
-a = [1,2,4]
-b = [3,5,6]
+a = [2,4]
+b = [1,3]
 
 merge(a, b)
