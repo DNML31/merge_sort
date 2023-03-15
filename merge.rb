@@ -29,5 +29,6 @@ def merge(a, b)
   print c.flatten
 end
 
-# a = [3,5,6]
-# b = [1,2,4]
+# a = [4]
+# b = [1]
+# merge(a,b)

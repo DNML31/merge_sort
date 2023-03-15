@@ -7,20 +7,17 @@ def merge_sort(array)
   else 
     # sort left half of elements
     a = array[0..((array.length/2)-1)]
+    merge_sort(a)
     # sort right half of elements
-    b = array[(array.length/2)..array.length]
-    merge(a,b)
+    b = array[((array.length/2))..((array.length)-1)]
+    merge_sort(b)
+    # only returns one 'c' array
   end
-
-  # assign left and right halves to separate arrays
-  # if merge_a.none?
-  #   merge_a << a
-  # elsif merge_b.none?
-  #   merge_b << b
-  # end
-
+  merge(a,b)
 end
 
+array = [4,1,3,2]
+merge_sort(array)
 
 # on input of n elements
 #   if n < 2
@@ -30,6 +27,4 @@ end
 #     sort right half of elements 
 #     merge sorted halves
 
-array = [1,2,6,4,5,3]
-merge_sort(array)
 
