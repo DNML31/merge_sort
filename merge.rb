@@ -30,12 +30,12 @@ def merge(a, b)
   # end
 
   if a[i].nil?
-    c.insert(k, b[j])
+    c.insert(k, b[j, (y-1)])
   elsif b[j].nil?
-    c.insert(k, a[i])
+    c.insert(k, a[i, (x-1)])
   end
 
-  print c
+  print c.flatten
 end
 
 a = [3,5,6]
