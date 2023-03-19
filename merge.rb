@@ -1,8 +1,8 @@
 def merge(a, b)
 
-# if a == nil || b ==nil
-#   return
-# end
+  if a == nil || b == nil
+    return
+  end
 
   x = a.length
   y = b.length
@@ -31,7 +31,7 @@ def merge(a, b)
     c.insert(k, a[i..(x-1)])
   end
 
-  print c.flatten
+  p c.flatten
 end
 
 # a = [1,3]
