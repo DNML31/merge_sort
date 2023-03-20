@@ -1,38 +1,58 @@
 require './merge'
 
-def merge_sort(array, result = [])
+def merge_sort(array)
 
-  if array.length < 2
+  if array.length == 1
     return array
-  else 
-    a = array[0..((array.length/2)-1)]
-    b = array[((array.length/2))..(array.length-1)]
-    a = merge_sort(a, result)
-    b = merge_sort(b, result)
+  end
 
-    c = merge(a,b)
+  a = array[0..(array.length/2)-1]
+  b = array[(array.length/2)..(array.length)]
+  a_sort = merge_sort(a)
+  b_sort = merge_sort(b)
 
-    if c.nil?
-      return
-    elsif c.any?
-      result << c
+  c = []
+
+  until a_sort.empty? && b_sort.empty? do
+    if a_sort.empty?
+      return c + b_sort
+    elsif b_sort.empty?
+      return c + a_sort
+    else
+      a_sort[0] < b_sort[0] ? c << a_sort.shift : c << b_sort.shift
     end
   end
 
-
-  a = result[0..((result.length/2)-1)]
-  b = result[((result.length/2))..(result.length-1)]
-  result = merge(a.flatten, b.flatten)
-  return
+  c
 
 end
 
 merge_sort([6,1,5,2,4,3])
 
-# on input of n elements
-#   if n < 2
-#     return
-#   else
-#     sort left half of elements
-#     sort right half of elements
-#     merge sorted halves
+
+# def merge_sort(array)
+#   if array.length == 1
+#     return array
+#   end
+
+#   left = array[0..(array.length/2)-1]
+#   right = array[(array.length/2)..array.length]
+
+#   sort_left = merge_sort(left)
+#   sort_right = merge_sort(right)
+  
+#   c = []
+
+#   until (sort_left.empty? && sort_right.empty?) do
+#     if sort_left.empty?
+#       return c + sort_right
+#     elsif sort_right.empty?
+#       return c + sort_left
+#     else
+#       sort_left[0] < sort_right[0] ? c << sort_left.shift : c << sort_right.shift
+  
+#     end
+#   end
+#   print c
+# end
+
