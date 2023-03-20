@@ -12,20 +12,22 @@ def merge_sort(array, result = [])
 
     c = merge(a,b)
 
-    if c.any?
-      result << c
-    else
+    if c.nil?
       return
+    elsif c.any?
+      result << c
     end
-
   end
-  
-  p result
-  # merge(a,b)
-  #how do i get the subarrays into this merge?
+
+
+  a = result[0..((result.length/2)-1)]
+  b = result[((result.length/2))..(result.length-1)]
+  result = merge(a.flatten, b.flatten)
+  return
+
 end
 
-merge_sort([3,1,2,4])
+merge_sort([6,1,5,2,4,3])
 
 # on input of n elements
 #   if n < 2
